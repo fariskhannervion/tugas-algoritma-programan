@@ -1,0 +1,49 @@
+class ATM:
+    def __init__(self, saldo=0):
+        self.saldo = saldo
+
+    def cek_saldo(self):
+        print(f"Saldo anda saat ini: ${self.saldo:.2f}")
+
+    def setor_uang(self):
+        jumlah = float(input("Masukkan jumlah uang yang akan disetor: $"))
+        self.saldo += jumlah
+        print(f"Setoran berhasil! Saldo anda sekarang: ${self.saldo:.2f}")
+
+    def tarik_uang(self):
+        jumlah = float(input("Masukkan jumlah uang yang akan ditarik: $"))
+        if jumlah > self.saldo:
+            print("Saldo anda tidak mencukupi!")
+        else:
+            self.saldo -= jumlah
+            print(f"Penarikan berhasil! Saldo anda sekarang: ${self.saldo:.2f}")
+
+    def keluar(self):
+        print("Terima kasih telah menggunakan sistem ATM kami!")
+
+def main():
+    atm = ATM()
+
+    while True:
+        print("\nMenu ATM:")
+        print("1. Cek Saldo")
+        print("2. Setor Uang")
+        print("3. Tarik Uang")
+        print("4. Keluar")
+
+        pilihan = input("Masukkan pilihan anda: ")
+
+        if pilihan == "1":
+            atm.cek_saldo()
+        elif pilihan == "2":
+            atm.setor_uang()
+        elif pilihan == "3":
+            atm.tarik_uang()
+        elif pilihan == "4":
+            atm.keluar()
+            break
+        else:
+            print("Pilihan tidak valid. Silakan coba lagi!")
+
+if __name__ == "__main__":
+    main()
