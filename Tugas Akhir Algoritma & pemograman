@@ -1,0 +1,92 @@
+//Kalifah Syahrul Ramadhan
+//12250514574
+
+
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+int main() {
+    int pilihan, saldo = 1000000, tarik, pin, nominal, transfer, isi_pulsa, salah = 0;
+
+    printf("------------- SELAMAT DATANG DI DEK (bukan bank)-----------\n");
+    printf("\n================MASUKKAN akun DEK ANDA================\n");
+    getch();
+
+    depan:
+    system("cls");
+    printf("\n------------- SELAMAT DATANG DI DEK (bukan bank)-----------\n");
+    pin:
+    printf("\n\nMasukkan PIN anda = ");
+    scanf("%d", &pin);
+    system("cls");
+
+    if (pin == 1234) {
+        printf("Pin Cocok !\n");
+        printf("\nSilahkan dilanjutkan\n");
+        system("cls");
+    } else {
+        printf("Silahkan masukkan pin yang benar !\n");
+        salah += 1;
+        if (salah == 3) {
+            printf("\nMALING KAU KAN ??!!\n\n");
+            goto end;
+        } else {
+            goto pin;
+        }
+    }
+
+    menu:
+    system("cls");
+    printf("\n------------- SELAMAT DATANG DI DEK (bukan bank)-----------\n");
+    printf("\n\n======================Menu Utama========================\n");
+    printf("\n\n1. Penarikan Tunai\n");
+    printf("\n\n2. Transfer\n");
+    printf("\n\n3. Isi pulsa\n");
+    printf("\n\n4. Cek Saldo\n");
+    printf("\n\n5. Keluar\n");
+    printf("\n\nMasukan pilihan anda: ");
+    scanf("%d", &pilihan);
+
+    if (pilihan == 1) {
+        tarik:
+        printf("\n\nMasukkan nominal penarikan = ");
+        scanf("%d", &nominal);
+        if (nominal > saldo) {
+            printf("Saldo tidak mencukupi\n");
+            goto tarik;
+        } else {
+            saldo -= nominal;
+            printf("\n\nSaldo Anda sekarang: %d\n", saldo);
+        }
+    } else if (pilihan == 2) {
+        transfer:
+        printf("\n\nMasukkan nominal transfer = ");
+        scanf("%d", &nominal);
+        if (nominal > saldo) {
+            printf("Saldo tidak mencukupi\n");
+            goto transfer;
+        } else {
+            saldo -= nominal;
+            printf("\n\nSaldo Anda sekarang: %d\n", saldo);
+        }
+    } else if (pilihan == 3) {
+        isi_pulsa:
+        printf("\n\nMasukkan nominal isi pulsa = ");
+        scanf("%d", &nominal);
+        if (nominal > saldo) {
+            printf("Saldo Kurang\n");
+            goto isi_pulsa;
+        } else {
+            saldo -= nominal;
+            printf("\n\nSaldo Anda sekarang: %d\n", saldo);
+        }
+    } else if (pilihan == 4) {
+        printf("\n\nSaldo Anda: %d\n", saldo);
+    } else if (pilihan == 5) {
+        end:
+        printf("\n\nTerima kasih telah menggunakan DEK (bukan bank)\n");
+    } else {
+        goto menu;
+    }
+}
